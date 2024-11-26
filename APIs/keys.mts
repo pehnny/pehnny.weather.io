@@ -7,8 +7,8 @@ async function fetchAPIKey(): Promise<TKeys>
         return request.json();
     } catch (error) {
         console.log(error.message);
-        return {openweathermap: "", geoapify: ""};
+        return {openweathermap: "", geoapify: "", ninja: ""};
     }
 }
 
-export const {openweathermap, geoapify} = await fetchAPIKey();
+export const {openweathermap: OPENWEATHERMAP, geoapify: GEOAPIFY, ninja: NINJA} = await fetchAPIKey();

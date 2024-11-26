@@ -1,5 +1,6 @@
 export type TKeys =
 {
     openweathermap: string,
-    geoapify: string
+    geoapify: string,
+    ninja: string
 }

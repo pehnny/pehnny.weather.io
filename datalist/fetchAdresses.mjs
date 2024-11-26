@@ -1,21 +1,15 @@
-import { geoapify } from "../APIs/keys.mjs";
+import { OPENWEATHERMAP } from "../APIs/keys.mjs";
 export async function fetchAdresses(keyword) {
-    const API = "https://api.geoapify.com/v1/geocode/autocomplete?";
-    const parameters = [
-        `text=${keyword}`,
-        "type=city",
-        "format=json",
-        "lang=fr",
-        `apiKey=${geoapify}`
-    ];
-    const URI = API + parameters.join("&");
+    // const URI = `https://api.api-ninjas.com/v1/geocoding?city=${keyword}&limit=10`;
+    const URI = `http://api.openweathermap.org/geo/1.0/direct?q=${keyword}&limit=10&appid=${OPENWEATHERMAP}`;
     try {
+        // const request = await fetch(URI, {method: "GET", headers: {"X-Api-Key": ninja}});
         const request = await fetch(URI);
         return request.json();
     }
     catch (error) {
         console.log(error.message);
-        return {};
+        return [];
     }
 }
 //# sourceMappingURL=fetchAdresses.mjs.map
