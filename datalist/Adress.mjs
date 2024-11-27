@@ -5,17 +5,16 @@ export class Adress {
     lon;
     country;
     state;
-    format;
-    static from(adress, id) {
-        const newAdress = new Adress();
-        newAdress.name = adress.name;
-        newAdress.local_names = adress.local_names;
-        newAdress.lat = adress.lat;
-        newAdress.lon = adress.lon;
-        newAdress.country = adress.country;
-        newAdress.state = adress.state;
-        newAdress.format = `${id}. ${newAdress.name}, ${newAdress.state}, ${newAdress.country}`;
-        return newAdress;
+    constructor(name, local_names, lat, lon, country, state) {
+        this.name = name;
+        this.local_names = local_names;
+        this.lat = lat;
+        this.lon = lon;
+        this.country = country;
+        this.state = state;
+    }
+    static from(adress) {
+        return new Adress(adress.name, adress.local_names, adress.lat, adress.lon, adress.country, adress.state);
     }
 }
 //# sourceMappingURL=Adress.mjs.map

@@ -1,6 +1,5 @@
 import { OPENWEATHERMAP } from "./APIs/keys.mjs";
 import { appendData } from "./datalist/appendData.mjs";
-import { clearData } from "./datalist/clearData.mjs";
 import { DATALIST } from "./datalist/datalist.mjs";
 import { fetchAdresses } from "./datalist/fetchAdresses.mjs";
 async function autocomplete(ev) {
@@ -12,15 +11,22 @@ async function autocomplete(ev) {
     if (keyword.length < 3) {
         return;
     }
-    clearData(datalist);
+    // TODO Clear options
+    // clearData(datalist);
+    // Fetch adresses
     const adresses = await fetchAdresses(keyword);
     if (adresses.length < 1) {
         return;
     }
+    // Store data in options and return them
     appendData(datalist, adresses);
+    const options = datalist.children;
+    // TODO Preselect first option
+    // TODO Listen to each options
 }
 const input = document.querySelector("#city-choice");
 if (input !== null) {
+    // TODO Consider to create different type of event to prevent deleting options early
     input.addEventListener("change", autocomplete);
 }
 async function displayTemperature(ev) {

@@ -10,24 +10,32 @@ export type TAdress =
 
 export class Adress implements TAdress
 {
-    name: string;
-    local_names: Object;
-    lat: number;
-    lon: number;
-    country: string;
-    state: string;
-    format: string;
+    name: string
+    local_names: Object
+    lat: number
+    lon: number
+    country: string
+    state: string
 
-    static from(adress: TAdress, id: number): Adress
+    constructor(name: string, local_names: Object, lat: number, lon: number, country: string, state: string)
     {
-        const newAdress = new Adress();
-        newAdress.name = adress.name;
-        newAdress.local_names = adress.local_names;
-        newAdress.lat = adress.lat;
-        newAdress.lon = adress.lon;
-        newAdress.country = adress.country;
-        newAdress.state = adress.state;
-        newAdress.format = `${id}. ${newAdress.name}, ${newAdress.state}, ${newAdress.country}`
-        return newAdress;
+        this.name = name;
+        this.local_names = local_names;
+        this.lat = lat;
+        this.lon = lon;
+        this.country = country;
+        this.state = state;
+    }
+
+    static from(adress: TAdress): Adress
+    {
+        return new Adress(
+            adress.name,
+            adress.local_names,
+            adress.lat,
+            adress.lon,
+            adress.country,
+            adress.state
+        );
     }
 }
